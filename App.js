@@ -1,19 +1,18 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { View } from "react-native";
+import { createAppContainer } from "react-navigation";
+
+import Stacks from "./components/Stacks";
+
+import UMFStatusBar from "./components/StatusBar";
+
+const Navigation = createAppContainer(Stacks);
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Hello World!</Text>
+    <View style={{ flex: 1 }}>
+      <UMFStatusBar backgroundColor="black" barStyle="light-content" />
+      <Navigation />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
-  }
-});
