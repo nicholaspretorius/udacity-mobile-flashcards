@@ -1,4 +1,5 @@
 {
+  "name": "mobile-flashcards",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
@@ -23,6 +24,7 @@
   },
   "devDependencies": {
     "babel-preset-expo": "^7.1.0",
+    "detox": "^14.5.0",
     "jest-expo": "^35.0.0",
     "react-native-testing-library": "^1.11.1",
     "react-test-renderer": "^16.9.0"
@@ -30,5 +32,16 @@
   "jest": {
     "preset": "jest-expo"
   },
-  "private": true
+  "private": true,
+  "detox": {
+    "test-runner": "jest",
+    "configurations": {
+      "ios.sim.debug": {
+        "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/mobile-flashcards.app",
+        "build": "xcodebuild -workspace ios/mobile-flashcards.xcworkspace -scheme mobile-flashcards -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+        "type": "ios.simulator",
+        "name": "iPhone 8"
+      }
+    }
+  }
 }
