@@ -7,6 +7,8 @@ import {
   REMOVE_CARD
 } from "./constants";
 
+import { _getDecks } from "./../utils/_DATA";
+
 export function receiveDecks(decks) {
   return {
     type: RECEIVE_DECKS,
@@ -45,5 +47,18 @@ export function removeCard(deckQuestion) {
   return {
     type: REMOVE_CARD,
     deckQuestion
+  };
+}
+
+export function handleInitialData() {
+  return dispatch => {
+    return _getDecks()
+      .then(data => {
+        dispatch(receiveDecks(data));
+      })
+      .catch(e => {
+        console.error(e);
+        console.log("Error: ", e);
+      });
   };
 }
