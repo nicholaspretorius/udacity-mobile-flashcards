@@ -41,9 +41,9 @@ export function addCard(card) {
   };
 }
 
-export function removeCard(question) {
+export function removeCard(deckQuestion) {
   return {
     type: REMOVE_CARD,
-    question
+    deckQuestion
   };
 }

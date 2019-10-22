@@ -51,8 +51,8 @@ describe("decks", () => {
   });
 
   it("creates an action to remove a card from a deck", () => {
-    const question = "A";
-    const action = { type: REMOVE_CARD, question };
-    expect(removeCard(question)).toEqual(action);
+    const deckQuestion = { question: "A", name: "React" };
+    const action = { type: REMOVE_CARD, deckQuestion };
+    expect(removeCard(deckQuestion)).toEqual(action);
   });
 });
