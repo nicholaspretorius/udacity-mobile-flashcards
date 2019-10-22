@@ -1,17 +1,31 @@
 import React, { Component } from "react";
 import { View, Text } from "react-native";
-import Hello from "./../components/Hello";
+import { connect } from "react-redux";
+
+import { handleInitialData } from "./../actions/decks";
 
 class Decks extends Component {
-  state = {};
+  componentDidMount() {
+    const { dispatch } = this.props;
+
+    dispatch(handleInitialData());
+  }
+
   render() {
+    const { decks } = this.props;
     return (
       <View>
         <Text>Decks: List</Text>
-        <Hello />
+        <Text>Decks: {JSON.stringify(decks)}</Text>
       </View>
     );
   }
 }
 
-export default Decks;
+function mapStateToProps(decks) {
+  return {
+    decks
+  };
+}
+
+export default connect(mapStateToProps)(Decks);
