@@ -2,26 +2,22 @@ import React, { Component } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
 
+import HeaderStyle from "./../components/HeaderStyle";
+import { removeDeck } from "./../actions/decks";
+
 class Deck extends Component {
   state = {};
 
   static navigationOptions = ({ navigation }) => {
     const deck = navigation.getParam("deck");
-    return {
-      title: deck.title,
-      headerStyle: {
-        backgroundColor: "#000"
-      },
-      headerTintColor: "#fff",
-      headerTitleStyle: {
-        fontWeight: "normal"
-      }
-    };
+    const style = HeaderStyle(deck.title);
+    return style;
   };
 
   handleDeleteDeck = () => {
-    const { deck } = this.props;
-    console.log("Delete deck: ", deck.title);
+    const { deck, dispatch, navigation } = this.props;
+    dispatch(removeDeck(deck.title));
+    navigation.goBack();
   };
 
   render() {
@@ -35,13 +31,15 @@ class Deck extends Component {
             ? `${questions.length} Cards`
             : `${questions.length} Card`}
         </Text>
-        <TouchableOpacity onPress={() => this.props.navigation.navigate("AddCard")}>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate("AddCard", { title })}>
           <Text>Add Card</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => this.props.navigation.navigate("Quiz")}>
-          <Text>Start Quiz</Text>
-        </TouchableOpacity>
+        {questions.length > 0 && (
+          <TouchableOpacity onPress={() => this.props.navigation.navigate("Quiz")}>
+            <Text>Start Quiz</Text>
+          </TouchableOpacity>
+        )}
 
         <TouchableOpacity onPress={this.handleDeleteDeck}>
           <Text>Delete Deck</Text>

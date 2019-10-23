@@ -2,8 +2,8 @@ import { createStackNavigator } from "react-navigation-stack";
 
 import Tabs from "./Tabs";
 import Deck from "./../views/Deck";
-import AddCard from "./AddCard";
-import Quiz from "./Quiz";
+import AddCard from "../views/AddCard";
+import Quiz from "../views/Quiz";
 
 const Stacks = createStackNavigator(
   {
