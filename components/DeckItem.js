@@ -6,7 +6,6 @@ class DeckItem extends Component {
 
   handlePress = () => {
     const { deck } = this.props;
-    console.log("Go to Deck");
     this.props.toDeck(deck);
   };
 

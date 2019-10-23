@@ -9,8 +9,8 @@ class Deck extends Component {
   state = {};
 
   static navigationOptions = ({ navigation }) => {
-    const deck = navigation.getParam("deck");
-    const style = HeaderStyle(deck.title);
+    const title = navigation.getParam("deckId");
+    const style = HeaderStyle(title);
     return style;
   };
 
@@ -49,11 +49,12 @@ class Deck extends Component {
   }
 }
 
-function mapStateToProps(state, { navigation }) {
-  const { deck } = navigation.state.params;
-  console.log("DeckId: ", deck);
+function mapStateToProps(decks, { navigation }) {
+  const { deckId } = navigation.state.params;
+  console.log("DeckId: ", deckId);
+  console.log("Decks: ", decks);
   return {
-    deck
+    deck: decks[deckId]
   };
 }
 
