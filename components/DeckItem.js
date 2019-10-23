@@ -3,12 +3,18 @@ import { Text, TouchableOpacity } from "react-native";
 
 class DeckItem extends Component {
   state = {};
+
+  handlePress = () => {
+    console.log("Go to Deck");
+    this.props.toDeck();
+  };
+
   render() {
     const { deck } = this.props;
     const { questions, title } = deck;
 
     return (
-      <TouchableOpacity>
+      <TouchableOpacity onPress={this.handlePress}>
         <Text>{title}</Text>
         <Text>
           {questions.length > 1 || questions.length < 1

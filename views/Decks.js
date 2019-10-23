@@ -13,6 +13,10 @@ class Decks extends Component {
     dispatch(handleInitialData());
   }
 
+  handleNav = () => {
+    this.props.navigation.navigate("Deck");
+  };
+
   render() {
     const { decks } = this.props;
     return (
@@ -22,7 +26,7 @@ class Decks extends Component {
 
           {Object.keys(decks).map(deck => (
             <View key={deck}>
-              <DeckItem deck={decks[deck]} />
+              <DeckItem deck={decks[deck]} toDeck={this.handleNav} />
             </View>
           ))}
         </View>

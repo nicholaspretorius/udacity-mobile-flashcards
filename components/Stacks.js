@@ -5,8 +5,13 @@ import Deck from "./../views/Deck";
 
 const Stacks = createStackNavigator(
   {
-    Decks: Tabs,
-    Deck: Deck
+    Decks: {
+      screen: Tabs
+    },
+    Deck: {
+      screen: Deck,
+      path: "Deck"
+    }
   },
   {
     initialRouteName: "Decks"
