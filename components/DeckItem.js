@@ -5,8 +5,9 @@ class DeckItem extends Component {
   state = {};
 
   handlePress = () => {
+    const { deck } = this.props;
     console.log("Go to Deck");
-    this.props.toDeck();
+    this.props.toDeck(deck);
   };
 
   render() {

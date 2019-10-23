@@ -13,8 +13,8 @@ class Decks extends Component {
     dispatch(handleInitialData());
   }
 
-  handleNav = () => {
-    this.props.navigation.navigate("Deck");
+  handleNav = deck => {
+    this.props.navigation.navigate("Deck", { deck });
   };
 
   render() {
