@@ -1,5 +1,17 @@
 import React, { Component } from "react";
-import { View, Text, TextInput, TouchableOpacity, Keyboard, StyleSheet } from "react-native";
+import {
+  ScrollView,
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  Keyboard,
+  StyleSheet
+} from "react-native";
+import { connect } from "react-redux";
+import { NavigationActions } from "react-navigation";
+
+import { addDeck } from "./../actions/decks";
 
 import Header from "./../components/Header";
 import { primary, secondary, std } from "./../utils/colors";
@@ -13,26 +25,45 @@ class AddDeck extends Component {
     this.setState({ title });
   };
 
+  onBlur = () => {
+    Keyboard.dismiss();
+  };
+
   addDeck = () => {
-    console.log("Add deck: ", this.state);
+    const { dispatch } = this.props;
+    const title = this.state.title;
+    dispatch(addDeck(this.state.title));
+    Keyboard.dismiss();
+    this.setState({ title: "" });
+    this.toHome();
+  };
+
+  toHome = () => {
+    this.props.navigation.dispatch(
+      NavigationActions.back({
+        key: "AddDeck"
+      })
+    );
   };
 
   render() {
     const { title } = this.state;
     return (
-      <View>
-        <Header title="Add Deck"></Header>
-        <TextInput
-          style={styles.input}
-          placeholder="Enter deck title"
-          value={title}
-          onChangeText={this.handleChange}
-          onBlur={Keyboard.dismiss}
-        ></TextInput>
-        <TouchableOpacity onPress={this.addDeck} style={styles.btn}>
-          <Text style={styles.btnText}>Create Deck</Text>
-        </TouchableOpacity>
-      </View>
+      <ScrollView>
+        <View>
+          <Header title="Add Deck"></Header>
+          <TextInput
+            style={styles.input}
+            placeholder="Enter deck title"
+            value={title}
+            onChangeText={this.handleChange}
+            onBlur={this.onBlur}
+          ></TextInput>
+          <TouchableOpacity onPress={this.addDeck} style={styles.btn}>
+            <Text style={styles.btnText}>Create Deck</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
     );
   }
 }
@@ -61,4 +92,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default AddDeck;
+export default connect()(AddDeck);
