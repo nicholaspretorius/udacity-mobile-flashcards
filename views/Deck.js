@@ -19,6 +19,11 @@ class Deck extends Component {
     };
   };
 
+  handleDeleteDeck = () => {
+    const { deck } = this.props;
+    console.log("Delete deck: ", deck.title);
+  };
+
   render() {
     const { deck } = this.props;
     const { title, questions } = deck;
@@ -30,11 +35,15 @@ class Deck extends Component {
             ? `${questions.length} Cards`
             : `${questions.length} Card`}
         </Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate("AddCard")}>
           <Text>Add Card</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate("Quiz")}>
+          <Text>Start Quiz</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={this.handleDeleteDeck}>
           <Text>Delete Deck</Text>
         </TouchableOpacity>
       </View>
