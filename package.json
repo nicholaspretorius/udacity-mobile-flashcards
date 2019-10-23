@@ -9,7 +9,8 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "test": "jest",
-    "test:dev": "yarn test --watchAll"
+    "test:dev": "yarn test --watchAll",
+    "debug": "REACT_DEBUGGER=\"unset ELECTRON_RUN_AS_NODE && open -g 'rndebugger://set-debugger-loc?port=19001' ||\" expo start"
   },
   "dependencies": {
     "expo": "^35.0.0",
