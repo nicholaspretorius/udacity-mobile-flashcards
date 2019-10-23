@@ -24,8 +24,8 @@ const decks = (state = {}, action) => {
         }
       };
     case REMOVE_DECK:
-      // const { title } = action;
-      const newState = omit(state.decks, title);
+      const { title: deckTitle } = action;
+      const newState = omit(state, deckTitle);
       return newState;
     case ADD_CARD:
       const { card } = action;
