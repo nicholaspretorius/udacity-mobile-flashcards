@@ -16,8 +16,9 @@ class Deck extends Component {
 
   handleDeleteDeck = () => {
     const { deck, dispatch, navigation } = this.props;
-    dispatch(removeDeck(deck.title));
-    navigation.goBack();
+    const { title } = deck;
+    dispatch(removeDeck(title));
+    navigation.navigation("Decks");
   };
 
   render() {
@@ -36,7 +37,7 @@ class Deck extends Component {
         </TouchableOpacity>
 
         {questions.length > 0 && (
-          <TouchableOpacity onPress={() => this.props.navigation.navigate("Quiz")}>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate("Quiz", { title })}>
             <Text>Start Quiz</Text>
           </TouchableOpacity>
         )}
