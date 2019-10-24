@@ -20,6 +20,15 @@ class Decks extends Component {
 
   render() {
     const { decks } = this.props;
+    if (Object.keys(decks).length === 0) {
+      return (
+        <View>
+          <Header title={"Mobile Flashcards"} />
+          <Text>You have no decks, please add a deck to get started.</Text>
+        </View>
+      );
+    }
+
     return (
       <ScrollView>
         <View>
