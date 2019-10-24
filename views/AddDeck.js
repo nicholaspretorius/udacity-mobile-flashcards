@@ -57,7 +57,7 @@ class AddDeck extends Component {
             placeholder="Enter deck title"
             value={title}
             onChangeText={this.handleChange}
-            onBlur={this.onBlur}
+            onBlur={() => Keyboard.dismiss}
           ></TextInput>
           <TouchableOpacity onPress={this.addDeck} style={styles.btn}>
             <Text style={styles.btnText}>Create Deck</Text>
