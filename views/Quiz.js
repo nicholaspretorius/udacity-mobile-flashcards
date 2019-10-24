@@ -47,7 +47,8 @@ class Quiz extends Component {
   };
 
   restartQuiz = () => {
-    this.setState({ current: 1, count: 0, correct: [], incorrect: [] });
+    const empty = [];
+    this.setState({ current: 1, count: 0, correct: empty, incorrect: empty });
   };
 
   toDeck = () => {
