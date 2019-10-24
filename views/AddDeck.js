@@ -39,11 +39,7 @@ class AddDeck extends Component {
   };
 
   toHome = () => {
-    this.props.navigation.dispatch(
-      NavigationActions.back({
-        key: "AddDeck"
-      })
-    );
+    this.props.navigation.goBack();
   };
 
   render() {
