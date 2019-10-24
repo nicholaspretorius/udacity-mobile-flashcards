@@ -59,7 +59,6 @@ export function handleInitialData() {
       })
       .catch(e => {
         console.error(e);
-        console.log("Error: ", e);
       });
   };
 }

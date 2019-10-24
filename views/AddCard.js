@@ -34,7 +34,6 @@ class AddCard extends Component {
     // TODO: Add validation for empty fields...
     const { dispatch } = this.props;
     const title = this.props.navigation.getParam("title");
-    console.log("Title: ", title);
     const { question, answer } = this.state;
     dispatch(handleAddCard({ question, answer, name: title }));
     Keyboard.dismiss();

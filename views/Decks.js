@@ -14,7 +14,6 @@ class Decks extends Component {
   }
 
   handleNav = deck => {
-    console.log("DeckNav: ", deck.title);
     this.props.navigation.navigate("Deck", { deckId: deck.title });
   };
 

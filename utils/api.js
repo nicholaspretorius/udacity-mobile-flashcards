@@ -1,6 +1,6 @@
 import { AsyncStorage } from "react-native";
 
-const FL_KEY = "UND_NCP_MobileFlashcards";
+export const FL_KEY = "UND_NCP_MobileFlashcards";
 
 function setStore() {
   let decks = {};
@@ -13,17 +13,14 @@ function getStore(results) {
 }
 
 export function _getDecks() {
-  console.log("_getDecks");
   return AsyncStorage.getItem(FL_KEY).then(getStore);
 }
 
 export function _getDeckByTitle(title) {
-  console.log("_getDeckById");
   return AsyncStorage.getItem(FL_KEY).then(results => results[title]);
 }
 
 export function _saveDeck(title) {
-  console.log("_saveDeck: ", title);
   return AsyncStorage.mergeItem(
     FL_KEY,
     JSON.stringify({
@@ -36,7 +33,6 @@ export function _saveDeck(title) {
 }
 
 export function _deleteDeck(title) {
-  console.log("_deleteDeck: ", title);
   return AsyncStorage.getItem(FL_KEY).then(res => {
     const data = JSON.parse(res);
     data[title] = undefined;
@@ -46,7 +42,6 @@ export function _deleteDeck(title) {
 }
 
 export function _addCard({ question, answer, name }) {
-  console.log("_addCard: ", question, answer, name);
   return AsyncStorage.getItem(FL_KEY).then(results => {
     let decks = { ...JSON.parse(results) };
     decks = {
