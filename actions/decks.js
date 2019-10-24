@@ -8,7 +8,7 @@ import {
 } from "./constants";
 
 // import { _getDecks } from "./../utils/_DATA";
-import { _getDecks, _saveDeck, _getDeckByTitle } from "./../utils/api";
+import { _getDecks, _saveDeck, _getDeckByTitle, _deleteDeck } from "./../utils/api";
 
 export function receiveDecks(decks) {
   return {
@@ -81,6 +81,16 @@ export function handleReceiveDeck(title) {
     return _getDeckByTitle(title)
       .then(data => {
         dispatch(receiveDeck(JSON.parse(data)));
+      })
+      .catch(e => console.error(e));
+  };
+}
+
+export function handleRemoveDeck(title) {
+  return dispatch => {
+    return _deleteDeck(title)
+      .then(() => {
+        dispatch(removeDeck(title));
       })
       .catch(e => console.error(e));
   };

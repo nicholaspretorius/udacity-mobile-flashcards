@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
 
 import HeaderStyle from "./../components/HeaderStyle";
-import { removeDeck } from "./../actions/decks";
+import { handleRemoveDeck } from "./../actions/decks";
 
 class Deck extends Component {
   state = {};
@@ -18,7 +18,7 @@ class Deck extends Component {
     const { deck, dispatch, navigation } = this.props;
     const { title } = deck;
     navigation.navigate("Decks");
-    dispatch(removeDeck(title));
+    dispatch(handleRemoveDeck(title));
   };
 
   render() {

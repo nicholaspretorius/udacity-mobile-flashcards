@@ -22,15 +22,25 @@ export function _getDeckByTitle(title) {
   return AsyncStorage.getItem(FL_KEY).then(results => results[title]);
 }
 
-export function _saveDeck(name) {
-  console.log("_saveDeck: ", name);
+export function _saveDeck(title) {
+  console.log("_saveDeck: ", title);
   return AsyncStorage.mergeItem(
     FL_KEY,
     JSON.stringify({
-      [name]: {
-        title: name,
+      [title]: {
+        title: title,
         questions: []
       }
     })
   );
+}
+
+export function _deleteDeck(title) {
+  console.log("_deleteDeck: ", title);
+  return AsyncStorage.getItem(FL_KEY).then(res => {
+    const data = JSON.parse(res);
+    data[title] = undefined;
+    delete data[title];
+    AsyncStorage.setItem(FL_KEY, JSON.stringify(data));
+  });
 }
