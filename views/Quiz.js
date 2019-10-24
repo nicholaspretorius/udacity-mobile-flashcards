@@ -52,6 +52,7 @@ class Quiz extends Component {
   };
 
   toDeck = () => {
+    this.restartQuiz();
     this.props.navigation.goBack();
   };
 
@@ -75,7 +76,8 @@ class Quiz extends Component {
           <View>
             <Text>Quiz Complete!</Text>
             <Text>
-              You got {correct.length} out of {questions.length} correct!
+              You got {correct.length} out of {questions.length} correct! (
+              {Math.floor((correct.length / questions.length) * 100)}%)
             </Text>
             <TouchableOpacity onPress={this.restartQuiz}>
               <Text>Restart Quiz</Text>
