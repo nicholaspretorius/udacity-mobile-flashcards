@@ -11,7 +11,7 @@ import {
 import { connect } from "react-redux";
 import { NavigationActions } from "react-navigation";
 
-import { addDeck } from "./../actions/decks";
+import { handleAddDeck } from "./../actions/decks";
 
 import Header from "./../components/Header";
 import { primary, secondary, std } from "./../utils/colors";
@@ -32,7 +32,7 @@ class AddDeck extends Component {
   addDeck = () => {
     const { dispatch } = this.props;
     const title = this.state.title;
-    dispatch(addDeck(this.state.title));
+    dispatch(handleAddDeck(title));
     Keyboard.dismiss();
     this.setState({ title: "" });
     this.toHome();
