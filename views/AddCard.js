@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { connect } from "react-redux";
 
-import { addCard } from "./../actions/decks";
+import { handleAddCard } from "./../actions/decks";
 import HeaderStyle from "./../components/HeaderStyle";
 import { primary, secondary, std } from "./../utils/colors";
 
@@ -36,7 +36,7 @@ class AddCard extends Component {
     const title = this.props.navigation.getParam("title");
     console.log("Title: ", title);
     const { question, answer } = this.state;
-    dispatch(addCard({ question, answer, name: title }));
+    dispatch(handleAddCard({ question, answer, name: title }));
     Keyboard.dismiss();
     this.setState({ question: "", answer: "" });
     this.props.navigation.goBack();

@@ -44,3 +44,18 @@ export function _deleteDeck(title) {
     AsyncStorage.setItem(FL_KEY, JSON.stringify(data));
   });
 }
+
+export function _addCard({ question, answer, name }) {
+  console.log("_addCard: ", question, answer, name);
+  return AsyncStorage.getItem(FL_KEY).then(results => {
+    let decks = { ...JSON.parse(results) };
+    decks = {
+      ...decks,
+      [name]: {
+        ...decks[name],
+        questions: decks[name].questions.concat([{ question, answer }])
+      }
+    };
+    AsyncStorage.mergeItem(FL_KEY, JSON.stringify(decks));
+  });
+}
