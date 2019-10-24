@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 import HeaderStyle from "./../components/HeaderStyle";
 import QuizQA from "./../components/QuizQA";
+import { setLocalNotification, clearLocalNotification } from "../utils/notifications";
 
 class Quiz extends Component {
   state = {
@@ -49,6 +50,7 @@ class Quiz extends Component {
   restartQuiz = () => {
     const empty = [];
     this.setState({ current: 1, count: 0, correct: empty, incorrect: empty });
+    clearLocalNotification().then(setLocalNotification);
   };
 
   toDeck = () => {
