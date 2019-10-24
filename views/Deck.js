@@ -17,36 +17,40 @@ class Deck extends Component {
   handleDeleteDeck = () => {
     const { deck, dispatch, navigation } = this.props;
     const { title } = deck;
+    navigation.navigate("Decks");
     dispatch(removeDeck(title));
-    navigation.navigation("Decks");
   };
 
   render() {
     const { deck } = this.props;
-    const { title, questions } = deck;
-    return (
-      <View>
-        <Text>{title}</Text>
-        <Text>
-          {questions.length > 1 || questions.length < 1
-            ? `${questions.length} Cards`
-            : `${questions.length} Card`}
-        </Text>
-        <TouchableOpacity onPress={() => this.props.navigation.navigate("AddCard", { title })}>
-          <Text>Add Card</Text>
-        </TouchableOpacity>
-
-        {questions.length > 0 && (
-          <TouchableOpacity onPress={() => this.props.navigation.navigate("Quiz", { title })}>
-            <Text>Start Quiz</Text>
+    if (deck) {
+      const { title, questions } = deck;
+      return (
+        <View>
+          <Text>{title}</Text>
+          <Text>
+            {questions.length > 1 || questions.length < 1
+              ? `${questions.length} Cards`
+              : `${questions.length} Card`}
+          </Text>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate("AddCard", { title })}>
+            <Text>Add Card</Text>
           </TouchableOpacity>
-        )}
 
-        <TouchableOpacity onPress={this.handleDeleteDeck}>
-          <Text>Delete Deck</Text>
-        </TouchableOpacity>
-      </View>
-    );
+          {questions.length > 0 && (
+            <TouchableOpacity onPress={() => this.props.navigation.navigate("Quiz", { title })}>
+              <Text>Start Quiz</Text>
+            </TouchableOpacity>
+          )}
+
+          <TouchableOpacity onPress={this.handleDeleteDeck}>
+            <Text>Delete Deck</Text>
+          </TouchableOpacity>
+        </View>
+      );
+    }
+
+    return <View></View>;
   }
 }
 
