@@ -19,7 +19,7 @@ Change directory:
 `cd udacity-mobile-flashcards` 
 
 Install dependencies:
-`npm install`
+`yarn install`
 
 Run the app: 
 `yarn start`
@@ -33,8 +33,18 @@ Once you have an emulator available:
 * Press `i` to open the iOS emulator *OR*
 * Press `a` to open the Android emulator.
 
+Emulated/Simulated Devices: 
 
-App: 
+The app was tested on: 
+
+* MacOS Mojave 10.14.6
+* iOS Simulator iPhone XR iOS 12.4
+* iPhone Xs iOS 13.1.2
+* Android Studio AVD: Pixel Q Android 10. Nexus 5X Q Android 10.
+
+*Note on Android: AVDs run incredibly slowly on my machine. Sometimes it is necessary to press 'Refresh' (R,R) once Expo is running. 
+
+### App 
 
 To run the app on your own device, install the Expo app from either the Apple App Store or from the Google Play Store. 
 
@@ -43,3 +53,18 @@ Once you have the Expo app on  your device, make sure your computer (running exp
 Please note: Once the app is running via `yarn start`, ensure that in your browser, on http://localhost:19002/ that you see the words "Tunnel ready" *before* scanning and opening the QR Code. 
 
 Once you have scanned the code, your mobile device will open the app to the app home screen. 
+
+### Rubric
+
+Please note that in the section "Individual Deck View" it states that: 
+
+"The individual deck view includes (at minimum): 
+
+...
+
+Option to start a new quiz
+
+...
+"
+
+In this version of the app, you can only start a quiz once there is at least 1 card in the deck. A user cannot start a quiz without a card and the "Start Quiz" button will not be visible. 
