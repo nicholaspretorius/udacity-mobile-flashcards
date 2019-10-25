@@ -16,10 +16,14 @@ import { secondaryLight, std, standout, standoutLight } from "../styles/colors";
 
 class AddDeck extends Component {
   state = {
-    title: ""
+    title: "",
+    invalid: false
   };
 
   handleChange = title => {
+    if (title !== "") {
+      this.setState({ invalid: false });
+    }
     this.setState({ title });
   };
 
@@ -29,10 +33,17 @@ class AddDeck extends Component {
 
   addDeck = () => {
     const { dispatch } = this.props;
+
+    if (this.state.title.replace(" ", "") === "") {
+      this.setState({ invalid: true });
+      return;
+    }
+
     const title = this.state.title;
+
     dispatch(handleAddDeck(title));
     Keyboard.dismiss();
-    this.setState({ title: "" });
+    this.setState({ title: "", invalid: false });
     this.toHome();
   };
 
@@ -47,7 +58,7 @@ class AddDeck extends Component {
         <View>
           <Header title="Add Deck"></Header>
           <TextInput
-            style={styles.input}
+            style={[styles.input, this.state.invalid ? styles.invalid : styles.valid]}
             placeholder="Enter deck title"
             value={title}
             onChangeText={this.handleChange}
@@ -86,6 +97,12 @@ const styles = StyleSheet.create({
     color: std,
     fontSize: 20,
     textAlign: "center"
+  },
+  invalid: {
+    borderBottomColor: "tomato"
+  },
+  valid: {
+    borderBottomColor: secondaryLight
   }
 });
 

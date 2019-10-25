@@ -17,7 +17,9 @@ import { secondaryLight, std, standout, standoutLight } from "../styles/colors";
 class AddCard extends Component {
   state = {
     question: "",
-    answer: ""
+    answer: "",
+    questionInvalid: false,
+    answerInvalid: false
   };
 
   static navigationOptions = ({ navigation }) => {
@@ -35,9 +37,20 @@ class AddCard extends Component {
     const { dispatch } = this.props;
     const title = this.props.navigation.getParam("title");
     const { question, answer } = this.state;
+
+    if (question.replace(" ", "") === "") {
+      this.setState({ invalidQuestion: true });
+      return;
+    }
+
+    if (answer.replace(" ", "") === "") {
+      this.setState({ invalidAnswer: true });
+      return;
+    }
+
     dispatch(handleAddCard({ question, answer, name: title }));
     Keyboard.dismiss();
-    this.setState({ question: "", answer: "" });
+    this.setState({ question: "", answer: "", invalidQuestion: false, invalidAnswer: false });
     this.props.navigation.goBack();
   };
 
@@ -47,17 +60,25 @@ class AddCard extends Component {
       <ScrollView>
         <View>
           <TextInput
-            style={styles.input}
+            style={[styles.input, this.state.invalidQuestion ? styles.invalid : styles.valid]}
             placeholder="Enter question"
             value={question}
-            onChangeText={question => this.setState({ question })}
+            onChangeText={question => {
+              question.replace(" ", "") === ""
+                ? this.setState({ question, invalidQuestion: true })
+                : this.setState({ question, invalidQuestion: false });
+            }}
             onBlur={this.onBlur}
           ></TextInput>
           <TextInput
-            style={styles.input}
+            style={[styles.input, this.state.invalidAnswer ? styles.invalid : styles.valid]}
             placeholder="Enter answer"
             value={answer}
-            onChangeText={answer => this.setState({ answer })}
+            onChangeText={answer => {
+              answer.replace(" ", "") === ""
+                ? this.setState({ answer, invalidAnswer: true })
+                : this.setState({ answer, invalidAnswer: false });
+            }}
             onBlur={this.onBlur}
           ></TextInput>
           <TouchableOpacity onPress={this.addCard} style={styles.btn}>
@@ -93,6 +114,12 @@ const styles = StyleSheet.create({
     color: std,
     fontSize: 20,
     textAlign: "center"
+  },
+  invalid: {
+    borderBottomColor: "tomato"
+  },
+  valid: {
+    borderBottomColor: secondaryLight
   }
 });
 
