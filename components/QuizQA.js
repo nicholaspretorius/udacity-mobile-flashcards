@@ -2,6 +2,15 @@ import React, { Component } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
 
+import {
+  primary,
+  secondary,
+  secondaryLight,
+  std,
+  standout,
+  standoutLight
+} from "./../styles/colors";
+
 class QuizQA extends Component {
   state = {
     displayAnswer: false
@@ -30,33 +39,89 @@ class QuizQA extends Component {
 
     if (i === current) {
       return (
-        <View>
+        <View style={styles.container}>
           <Text>
             Progress: {i}/{questionCount}
           </Text>
-          {!displayAnswer && <Text>{question.question}</Text>}
-          {displayAnswer && <Text>{question.answer}</Text>}
-          <TouchableOpacity onPress={this.setDisplayAnswer}>
-            {!displayAnswer && <Text>View Answer</Text>}
-            {displayAnswer && <Text>View Question</Text>}
+          {!displayAnswer && <Text style={deckTitle}>{question.question}</Text>}
+          {displayAnswer && <Text style={deckTitle}>{question.answer}</Text>}
+          <TouchableOpacity onPress={this.setDisplayAnswer} style={styles.btnLink}>
+            {!displayAnswer && <Text style={btnLinkText}>View Answer</Text>}
+            {displayAnswer && <Text style={btnLinkText}>View Question</Text>}
           </TouchableOpacity>
-          <TouchableOpacity onPress={this.correct}>
-            <Text>Correct</Text>
+          <TouchableOpacity onPress={this.correct} style={styles.btn}>
+            <Text style={styles.btnText}>Correct</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={this.incorrect}>
-            <Text>Incorrect</Text>
+          <TouchableOpacity style={styles.btnAlt} onPress={this.incorrect}>
+            <Text style={styles.btnText}>Incorrect</Text>
           </TouchableOpacity>
         </View>
       );
     }
 
-    // if (current > questionCount) {
-    //   return <Text>Quiz Complete!</Text>;
-    // }
-
     return <View />;
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  deckTitle: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: primary,
+    marginBottom: 10,
+    marginTop: 25
+  },
+  cardTitle: {
+    fontSize: 15,
+    color: secondary
+  },
+  input: {
+    borderColor: secondaryLight,
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    height: 50,
+    fontSize: 20,
+    paddingLeft: 20,
+    paddingRight: 20
+  },
+  btn: {
+    borderWidth: 1,
+    borderColor: standoutLight,
+    backgroundColor: standout,
+    padding: 15,
+    marginTop: 25,
+    marginLeft: 20,
+    marginRight: 20,
+    borderRadius: 5
+  },
+  btnText: {
+    color: std,
+    fontSize: 20,
+    textAlign: "center"
+  },
+  btnAlt: {
+    borderWidth: 1,
+    borderColor: secondaryLight,
+    backgroundColor: secondary,
+    padding: 15,
+    marginTop: 25,
+    marginLeft: 20,
+    marginRight: 20,
+    borderRadius: 5
+  },
+  btnLink: {
+    padding: 15,
+    marginTop: 25,
+    textAlign: "center"
+  },
+  btnLinkText: {
+    color: standout
+  }
+});
 
 function mapStateToProps(decks, { deck }) {
   return {

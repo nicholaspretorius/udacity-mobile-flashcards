@@ -12,7 +12,7 @@ import { connect } from "react-redux";
 
 import { handleAddCard } from "./../actions/decks";
 import HeaderStyle from "./../components/HeaderStyle";
-import { primary, secondary, std } from "./../utils/colors";
+import { primary, secondaryLight, std, standout, standoutLight } from "../styles/colors";
 
 class AddCard extends Component {
   state = {
@@ -61,7 +61,7 @@ class AddCard extends Component {
             onBlur={this.onBlur}
           ></TextInput>
           <TouchableOpacity onPress={this.addCard} style={styles.btn}>
-            <Text style={styles.btnText}>Create Card</Text>
+            <Text style={styles.btnText}>Add Card</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
@@ -71,20 +71,23 @@ class AddCard extends Component {
 
 const styles = StyleSheet.create({
   input: {
-    borderColor: primary,
+    borderColor: secondaryLight,
     borderTopWidth: 1,
     borderBottomWidth: 1,
     height: 50,
-    fontSize: 25,
+    fontSize: 20,
     paddingLeft: 20,
     paddingRight: 20
   },
   btn: {
     borderWidth: 1,
-    borderColor: primary,
-    backgroundColor: secondary,
+    borderColor: standoutLight,
+    backgroundColor: standout,
     padding: 15,
-    margin: 5
+    margin: 25,
+    marginLeft: 20,
+    marginRight: 20,
+    borderRadius: 5
   },
   btnText: {
     color: std,

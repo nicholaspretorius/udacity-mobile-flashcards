@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { primary, std } from "./../utils/colors";
+import { primary, std } from "../styles/colors";
 
 const Header = ({ title }) => {
   return (

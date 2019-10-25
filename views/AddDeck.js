@@ -9,12 +9,10 @@ import {
   StyleSheet
 } from "react-native";
 import { connect } from "react-redux";
-import { NavigationActions } from "react-navigation";
 
 import { handleAddDeck } from "./../actions/decks";
-
 import Header from "./../components/Header";
-import { primary, secondary, std } from "./../utils/colors";
+import { secondaryLight, std, standout, standoutLight } from "../styles/colors";
 
 class AddDeck extends Component {
   state = {
@@ -56,7 +54,7 @@ class AddDeck extends Component {
             onBlur={() => Keyboard.dismiss}
           ></TextInput>
           <TouchableOpacity onPress={this.addDeck} style={styles.btn}>
-            <Text style={styles.btnText}>Create Deck</Text>
+            <Text style={styles.btnText}>Add Deck</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
@@ -66,20 +64,23 @@ class AddDeck extends Component {
 
 const styles = StyleSheet.create({
   input: {
-    borderColor: primary,
+    borderColor: secondaryLight,
     borderTopWidth: 1,
     borderBottomWidth: 1,
     height: 50,
-    fontSize: 25,
+    fontSize: 20,
     paddingLeft: 20,
     paddingRight: 20
   },
   btn: {
     borderWidth: 1,
-    borderColor: primary,
-    backgroundColor: secondary,
+    borderColor: standoutLight,
+    backgroundColor: standout,
     padding: 15,
-    margin: 5
+    margin: 25,
+    marginLeft: 20,
+    marginRight: 20,
+    borderRadius: 5
   },
   btnText: {
     color: std,

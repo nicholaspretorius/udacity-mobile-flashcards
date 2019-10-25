@@ -6,6 +6,15 @@ import HeaderStyle from "./../components/HeaderStyle";
 import QuizQA from "./../components/QuizQA";
 import { setLocalNotification, clearLocalNotification } from "../utils/notifications";
 
+import {
+  primary,
+  secondary,
+  secondaryLight,
+  std,
+  standout,
+  standoutLight
+} from "./../styles/colors";
+
 class Quiz extends Component {
   state = {
     current: 1,
@@ -63,7 +72,7 @@ class Quiz extends Component {
     const { questions } = deck;
     const { current, correct } = this.state;
     return (
-      <View>
+      <View style={styles.container}>
         {questions.map((question, index) => (
           <QuizQA
             key={question.question}
@@ -76,16 +85,16 @@ class Quiz extends Component {
         ))}
         {current > questions.length && (
           <View>
-            <Text>Quiz Complete!</Text>
-            <Text>
+            <Text style={deckTitle}>Quiz Complete!</Text>
+            <Text style={cardTitle}>
               You got {correct.length} out of {questions.length} correct! (
               {Math.floor((correct.length / questions.length) * 100)}%)
             </Text>
-            <TouchableOpacity onPress={this.restartQuiz}>
-              <Text>Restart Quiz</Text>
+            <TouchableOpacity style={styles.btn} onPress={this.restartQuiz}>
+              <Text style={styles.btnText}>Restart Quiz</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={this.toDeck}>
-              <Text>Back to Deck</Text>
+            <TouchableOpacity style={styles.btnLink} onPress={this.toDeck}>
+              <Text style={styles.btnLinkText}>Back to Deck</Text>
             </TouchableOpacity>
           </View>
         )}
@@ -93,6 +102,56 @@ class Quiz extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  deckTitle: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: primary,
+    marginBottom: 10,
+    marginTop: 25
+  },
+  cardTitle: {
+    fontSize: 15,
+    color: secondary
+  },
+  input: {
+    borderColor: secondaryLight,
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    height: 50,
+    fontSize: 20,
+    paddingLeft: 20,
+    paddingRight: 20
+  },
+  btn: {
+    borderWidth: 1,
+    borderColor: standoutLight,
+    backgroundColor: standout,
+    padding: 15,
+    marginTop: 25,
+    marginLeft: 20,
+    marginRight: 20,
+    borderRadius: 5
+  },
+  btnText: {
+    color: std,
+    fontSize: 20,
+    textAlign: "center"
+  },
+  btnLink: {
+    padding: 15,
+    marginTop: 25,
+    textAlign: "center"
+  },
+  btnLinkText: {
+    color: standout
+  }
+});
 
 function mapStateToProps(decks, { navigation }) {
   const { title } = navigation.state.params;

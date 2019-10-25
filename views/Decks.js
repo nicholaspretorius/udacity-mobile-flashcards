@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ScrollView, View, Text } from "react-native";
+import { ScrollView, View, Text, StyleSheet } from "react-native";
 import { connect } from "react-redux";
 
 import { handleInitialData } from "./../actions/decks";
@@ -23,7 +23,9 @@ class Decks extends Component {
       return (
         <View>
           <Header title={"Mobile Flashcards"} />
-          <Text>You have no decks, please add a deck to get started.</Text>
+          <View>
+            <Text>You have no decks, please add a deck to get started.</Text>
+          </View>
         </View>
       );
     }
@@ -32,17 +34,26 @@ class Decks extends Component {
       <ScrollView>
         <View>
           <Header title={"Mobile Flashcards"} />
-
-          {Object.keys(decks).map(deck => (
-            <View key={deck}>
-              <DeckItem deck={decks[deck]} toDeck={this.handleNav} />
-            </View>
-          ))}
+          <View style={styles.container}>
+            {Object.keys(decks).map(deck => (
+              <View key={deck}>
+                <DeckItem deck={decks[deck]} toDeck={this.handleNav} />
+              </View>
+            ))}
+          </View>
         </View>
       </ScrollView>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  constainer: {
+    flex: 1,
+    alignItems: "center",
+    paddingTop: 15
+  }
+});
 
 function mapStateToProps(decks) {
   return {

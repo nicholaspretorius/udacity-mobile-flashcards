@@ -1,3 +1,5 @@
+import {} from "./../styles/colors";
+
 const HeaderStyle = title => {
   return {
     title: title,
