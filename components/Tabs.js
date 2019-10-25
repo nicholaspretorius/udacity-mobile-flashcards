@@ -5,6 +5,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 import Decks from "./../views/Decks";
 import AddDeck from "./../views/AddDeck";
+import { standout, secondaryLight } from "./../styles/colors";
 
 const Tabs = createBottomTabNavigator(
   {
@@ -34,10 +35,10 @@ const Tabs = createBottomTabNavigator(
     },
     tabBarOptions: {
       activeTintColor: Platform.OS === "ios" ? "white" : "white",
-      inactiveTintColor: "gray",
+      inactiveTintColor: secondaryLight,
       style: {
         height: 56,
-        backgroundColor: Platform.OS === "ios" ? "black" : "black",
+        backgroundColor: standout,
         shadowColor: `rgba(0, 0, 0, 0.24)`,
         shadowOffset: {
           width: 0,

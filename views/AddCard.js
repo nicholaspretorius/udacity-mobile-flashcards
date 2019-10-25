@@ -12,7 +12,7 @@ import { connect } from "react-redux";
 
 import { handleAddCard } from "./../actions/decks";
 import HeaderStyle from "./../components/HeaderStyle";
-import { primary, secondaryLight, std, standout, standoutLight } from "../styles/colors";
+import { secondaryLight, std, standout, standoutLight } from "../styles/colors";
 
 class AddCard extends Component {
   state = {

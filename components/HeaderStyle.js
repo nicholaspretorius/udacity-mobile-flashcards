@@ -1,10 +1,10 @@
-import {} from "./../styles/colors";
+import { standout } from "./../styles/colors";
 
 const HeaderStyle = title => {
   return {
     title: title,
     headerStyle: {
-      backgroundColor: "#000"
+      backgroundColor: standout
     },
     headerTintColor: "#fff",
     headerTitleStyle: {

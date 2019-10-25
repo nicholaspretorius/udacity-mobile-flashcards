@@ -1,18 +1,18 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { primary, std } from "../styles/colors";
+import { standout, std } from "../styles/colors";
 
 const Header = ({ title }) => {
   return (
     <View>
-      <Text style={styles.header}>{title}</Text>
+      <Text style={styles.headerBar}>{title}</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  header: {
-    backgroundColor: primary,
+  headerBar: {
+    backgroundColor: standout,
     color: std,
     fontSize: 25,
     paddingTop: 20,

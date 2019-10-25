@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { connect } from "react-redux";
 
 import HeaderStyle from "./../components/HeaderStyle";
@@ -85,9 +85,9 @@ class Quiz extends Component {
         ))}
         {current > questions.length && (
           <View>
-            <Text style={deckTitle}>Quiz Complete!</Text>
-            <Text style={cardTitle}>
-              You got {correct.length} out of {questions.length} correct! (
+            <Text style={styles.deckTitle}>Quiz Complete</Text>
+            <Text style={styles.cardTitle}>
+              You got {correct.length} out of {questions.length} correct. (
               {Math.floor((correct.length / questions.length) * 100)}%)
             </Text>
             <TouchableOpacity style={styles.btn} onPress={this.restartQuiz}>
@@ -106,14 +106,16 @@ class Quiz extends Component {
 const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    textAlign: "center"
   },
   deckTitle: {
     fontSize: 20,
     fontWeight: "bold",
     color: primary,
     marginBottom: 10,
-    marginTop: 25
+    marginTop: 25,
+    textAlign: "center"
   },
   cardTitle: {
     fontSize: 15,
@@ -145,10 +147,10 @@ const styles = StyleSheet.create({
   },
   btnLink: {
     padding: 15,
-    marginTop: 25,
-    textAlign: "center"
+    marginTop: 25
   },
   btnLinkText: {
+    textAlign: "center",
     color: standout
   }
 });

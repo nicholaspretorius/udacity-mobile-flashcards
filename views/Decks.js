@@ -23,8 +23,10 @@ class Decks extends Component {
       return (
         <View>
           <Header title={"Mobile Flashcards"} />
-          <View>
-            <Text>You have no decks, please add a deck to get started.</Text>
+          <View style={styles.container}>
+            <Text style={styles.textOnly}>
+              You have no decks, please add a deck to get started.
+            </Text>
           </View>
         </View>
       );
@@ -52,6 +54,11 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     paddingTop: 15
+  },
+  textOnly: {
+    textAlign: "center",
+    marginTop: 25,
+    fontSize: 20
   }
 });
 

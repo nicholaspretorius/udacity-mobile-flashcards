@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { connect } from "react-redux";
 
 import {
@@ -40,14 +40,16 @@ class QuizQA extends Component {
     if (i === current) {
       return (
         <View style={styles.container}>
-          <Text>
-            Progress: {i}/{questionCount}
-          </Text>
-          {!displayAnswer && <Text style={deckTitle}>{question.question}</Text>}
-          {displayAnswer && <Text style={deckTitle}>{question.answer}</Text>}
+          <View style={styles.progressIndicator}>
+            <Text style={styles.progressIndicatorText}>
+              {i}/{questionCount}
+            </Text>
+          </View>
+          {!displayAnswer && <Text style={styles.deckTitle}>{question.question}</Text>}
+          {displayAnswer && <Text style={styles.deckTitle}>{question.answer}</Text>}
           <TouchableOpacity onPress={this.setDisplayAnswer} style={styles.btnLink}>
-            {!displayAnswer && <Text style={btnLinkText}>View Answer</Text>}
-            {displayAnswer && <Text style={btnLinkText}>View Question</Text>}
+            {!displayAnswer && <Text style={styles.btnLinkText}>View Answer</Text>}
+            {displayAnswer && <Text style={styles.btnLinkText}>View Question</Text>}
           </TouchableOpacity>
           <TouchableOpacity onPress={this.correct} style={styles.btn}>
             <Text style={styles.btnText}>Correct</Text>
@@ -98,11 +100,6 @@ const styles = StyleSheet.create({
     marginRight: 20,
     borderRadius: 5
   },
-  btnText: {
-    color: std,
-    fontSize: 20,
-    textAlign: "center"
-  },
   btnAlt: {
     borderWidth: 1,
     borderColor: secondaryLight,
@@ -113,6 +110,11 @@ const styles = StyleSheet.create({
     marginRight: 20,
     borderRadius: 5
   },
+  btnText: {
+    color: std,
+    fontSize: 20,
+    textAlign: "center"
+  },
   btnLink: {
     padding: 15,
     marginTop: 25,
@@ -120,6 +122,16 @@ const styles = StyleSheet.create({
   },
   btnLinkText: {
     color: standout
+  },
+  progressIndicator: {
+    borderRadius: 10,
+    backgroundColor: standout,
+    margin: 15,
+    padding: 5
+  },
+  progressIndicatorText: {
+    color: std,
+    fontWeight: "bold"
   }
 });
 

@@ -58,7 +58,7 @@ class Deck extends Component {
           )}
 
           <TouchableOpacity style={styles.btnLink} onPress={this.handleDeleteDeck}>
-            <Text style={styles.btnLinkText}>Delete Deck</Text>
+            <Text style={styles.btnLinkText}>Delete this Deck</Text>
           </TouchableOpacity>
         </View>
       );
