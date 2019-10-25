@@ -6,9 +6,9 @@ Mobile Flashcards is an app that helps you study. For each subject or category y
 
 The app comprises of "Decks" containing "Cards". Each deck you create will contain questions (cards) for a particular category (deck). For each card you create a question and an answer. 
 
-Once you have a deck with questions, you can start a quiz to test your knowledge. As you go through the quiz, you will mark your answers as "Correct" or "Incorrect". At the end of your quiz you will get a score. 
+Once you have a deck with cards, you can start a quiz to test your knowledge. As you go through the quiz, you will mark your answers as "Correct" or "Incorrect". At the end of your quiz you will get a score. 
 
-You can add as many decks as you like. And you can add as many questions to each deck as you like. Up to you! 
+Happy studying!
 
 ### Instructions. 
 
@@ -24,7 +24,7 @@ Install dependencies:
 Run the app: 
 `yarn start`
 
-Emulators:
+#### Emulators
 
 Please ensure you have XCode or Android Studio installed and configured correctly. 
 
@@ -33,7 +33,7 @@ Once you have an emulator available:
 * Press `i` to open the iOS emulator *OR*
 * Press `a` to open the Android emulator.
 
-Emulated/Simulated Devices: 
+#### Emulated/Simulated Devices 
 
 The app was tested on: 
 
@@ -50,7 +50,7 @@ To run the app on your own device, install the Expo app from either the Apple Ap
 
 Once you have the Expo app on  your device, make sure your computer (running expo) and your mobile device (where you will open expo) is on the same wifi network. Once ready, you can scan the provided QR Code and the app will open on your device. 
 
-Please note: Once the app is running via `yarn start`, ensure that in your browser, on http://localhost:19002/ that you see the words "Tunnel ready" *before* scanning and opening the QR Code. 
+**Please note:** Once the app is running via `yarn start`, ensure that in your browser, on http://localhost:19002/ that you see the words "Tunnel ready" *before* scanning and opening the QR Code. 
 
 Once you have scanned the code, your mobile device will open the app to the app home screen. 
 
@@ -58,13 +58,13 @@ Once you have scanned the code, your mobile device will open the app to the app 
 
 Please note that in the section "Individual Deck View" it states that: 
 
-"The individual deck view includes (at minimum): 
-
-...
-
-Option to start a new quiz
-
-...
-"
+> "The individual deck view includes (at minimum): 
+>
+> ...
+>
+> Option to start a new quiz
+>
+> ...
+> "
 
 In this version of the app, you can only start a quiz once there is at least 1 card in the deck. A user cannot start a quiz without a card and the "Start Quiz" button will not be visible. 
