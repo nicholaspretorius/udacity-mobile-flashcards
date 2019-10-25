@@ -7,7 +7,6 @@ import { AsyncStorage } from "react-native";
 const NOTIFICATION_KEY = `${FL_KEY}:Notifications`;
 
 export function clearLocalNotification() {
-  console.log("Clear");
   return AsyncStorage.removeItem(NOTIFICATION_KEY).then(
     Notifications.cancelAllScheduledNotificationsAsync
   );
