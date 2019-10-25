@@ -43,8 +43,6 @@ export function setLocalNotification() {
             tomorrow.setHours(9);
             tomorrow.setMinutes(0);
 
-            console.log("Notification set for:", tomorrow);
-
             Notifications.scheduleLocalNotificationAsync(createNotification(), {
               time: tomorrow,
               repeat: "day"
